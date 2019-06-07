@@ -36,21 +36,23 @@ var app = new Vue({
       console.log(hero)
       hero.target === 0 ? hero.target = 1 : hero.target = 0
     },
+    // УМЕНИЯ 
     attack: function (item, source, target) {
-      target.hp -= source.attack
-      this.logs.push('Герой "' + source.name + '" нанёс герою "' + target.name + '" ' + source.attack + ' урона.');
+
+      target.hp -= (source.attack + item.power)
+      this.logs.push('Герой "' + source.name + '" нанёс герою "' + target.name + '" ' + (source.attack + item.power) + ' урона.');
     },
     defence: function (item, source, target) {
       this.logs.push('У героя "' + source.name + '" зашита не удалась!');
     },
     heal: function (item, source, target) {
-      target.hp += source.attack
-      this.logs.push('Герой "' + source.name + '" вылечил герою "' + target.name + '" ' + source.attack + ' здоровья.');
+      target.hp += item.power
+      this.logs.push('Герой "' + source.name + '" вылечил герою "' + target.name + '" ' + item.power + ' здоровья.');
     },
     fireboll: function (item, source, target) {
       console.log(item)
-      target.hp -= source.attack
-      this.logs.push('Герой "' + source.name + '" запусти в героя "' + target.name + '" огненный шар и отнял ' + source.attack + ' здоровья.');
+      target.hp -= item.power
+      this.logs.push('Герой "' + source.name + '" запусти в героя "' + target.name + '" огненный шар и отнял ' + item.power + ' здоровья.');
     }
   }
 });
