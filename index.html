@@ -16,7 +16,8 @@
     <table border width="100%" cellspacing="20px" cellpadding="15px">
       <tr>
         <td width="30%">
-          <hero-card :hero="heroes[0]" :enemy="heroes[1]"></hero-card>
+          <!-- <button :click="changeTarget(heroes[0])">Поменять ком</button> -->
+          <hero-card :hero="heroes[0]" :target="heroes[1]" get-target="getTarget"></hero-card>
         </td>
 
         <td width="40%" align="center">
@@ -24,7 +25,7 @@
         </td>
 
         <td width="30%">
-          <hero-card :hero="heroes[1]" :enemy="heroes[0]"></hero-card>
+          <hero-card :hero="heroes[1]" :target="heroes[0]" :get-target="getTarget"></hero-card>
         </td>
       </tr>
     </table>

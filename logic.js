@@ -1,9 +1,10 @@
 Vue.component("hero-card", {
-  props: ["hero", "enemy"],
+  props: ["hero", "target", "getTarget"],
   template: `
   <div>
+    <hero-target :hero="target"></hero-target>
     <hero-info :hero="hero"></hero-info>
-    <hero-skill v-for="(skill, index) in hero.skills" :key="index" :skill="skill" :source="hero" :target="enemy"></hero-skill>
+    <hero-skill v-for="(skill, index) in hero.skills" :key="index" :skill="skill" :source="hero" :target="target"></hero-skill>
   </div>`
 });
 
@@ -22,6 +23,11 @@ Vue.component("hero-skill", {
   props: ["skill", "source", "target"],
   template: `<button @click='skill.use(source, target)' :title="skill.description + '. Откат: ' + skill.step">{{ skill.name }} {{skill.power}} </button>`
 });
+
+Vue.component("hero-target", {
+  props: ["hero"],
+  template: `<div>Цель: {{ hero.name }}</div>`
+})
 
 Vue.component("buttle-info", {
   props: ["logs", "step"],
@@ -45,7 +51,7 @@ var skills = [{
     power: 3,
     step: 0,
     use: function (source, target) {
-      app.attack(source, target)
+      app.attack(this, source, target)
       // console.log(123)
     }
   },
@@ -55,7 +61,7 @@ var skills = [{
     power: 2,
     step: 2,
     use: function (source, target) {
-      app.defence(source, target)
+      app.defence(this, source, target)
     }
   },
   {
@@ -64,7 +70,7 @@ var skills = [{
     power: 5,
     step: 4,
     use: function (source, target) {
-      app.heal(source, target)
+      app.heal(this, source, target)
     }
   },
   {
@@ -73,7 +79,7 @@ var skills = [{
     power: 5,
     step: 8,
     use: function (source, target) {
-      app.fireboll(source, target)
+      app.fireboll(this, source, target)
     }
   }
 ];
@@ -82,16 +88,16 @@ var app = new Vue({
   el: "#app",
   data: {
     step: 0,
-    source: {},
-    target: {},
     heroes: [{
-        name: "Герой 1",
+        name: "Мой герой",
+        target: 1,
         hp: 10,
         attack: 3,
         skills: skills.slice(0, 3)
       },
       {
-        name: "Герой 2",
+        name: "Враг",
+        target: 0,
         hp: 20,
         attack: 2,
         skills: skills
@@ -109,25 +115,27 @@ var app = new Vue({
     nextStep: function () {
       this.step++;
     },
-    setSource(hero) {
-      this.source = hero
+    getTarget(index) {
+      return this.heroes[index]
     },
-    setTarget(hero) {
-      this.target = hero
+    changeTarget(hero) {
+      console.log(hero)
+      hero.target === 0 ? hero.target = 1 : hero.target = 0
     },
-    attack: function (source, target) {
+    attack: function (item, source, target) {
       target.hp -= source.attack
       this.logs.push('Герой "' + source.name + '" нанёс герою "' + target.name + '" ' + source.attack + ' урона.');
     },
-    defence: function (source, target) {
+    defence: function (item, source, target) {
       this.logs.push('У героя "' + source.name + '" зашита не удалась!');
     },
-    heal: function (source, target) {
+    heal: function (item, source, target) {
       target.hp += source.attack
       this.logs.push('Герой "' + source.name + '" вылечил герою "' + target.name + '" ' + source.attack + ' здоровья.');
     },
-    fireboll: function (source, target) {
-      target.hp += source.attack
+    fireboll: function (item, source, target) {
+      console.log(item)
+      target.hp -= source.attack
       this.logs.push('Герой "' + source.name + '" запусти в героя "' + target.name + '" огненный шар и отнял ' + source.attack + ' здоровья.');
     }
   }
