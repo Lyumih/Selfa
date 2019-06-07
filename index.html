@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
 
-    <!-- development version, includes helpful console warnings -->
-    <script src="vue.js"></script>
-  </head>
-  <body>
-    <div id="app">
-      <table border width="100%" cellspacing="20px" cellpadding="15px">
-        <tr>
-          <td width="30%">
-            <hero-card :hero="heroes[0]"></hero-card>
-          </td>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
 
-          <td width="40%" align="center">
-            <buttle-info :logs="logs"></buttle-info>
-          </td>
+  <!-- development version, includes helpful console warnings -->
+  <script src="vue.js"></script>
+</head>
 
-          <td width="30%">
-            <hero-card :hero="heroes[1]"></hero-card>
-          </td>
-        </tr>
-      </table>
-    </div>
+<body>
+  <div id="app">
+    <table border width="100%" cellspacing="20px" cellpadding="15px">
+      <tr>
+        <td width="30%">
+          <hero-card :hero="heroes[0]" :enemy="heroes[1]"></hero-card>
+        </td>
 
-    <script src="logic.js"></script>
-  </body>
+        <td width="40%" align="center">
+          <buttle-info :logs="logs" :step="step"></buttle-info>
+        </td>
+
+        <td width="30%">
+          <hero-card :hero="heroes[1]" :enemy="heroes[0]"></hero-card>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="logic.js">
+  </script>
+</body>
+
 </html>
