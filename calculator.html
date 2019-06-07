@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Calculator</title>
+
+  <!-- development version, includes helpful console warnings -->
+  <script src="vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Калькутор</h1>
+    <h3>Минимальный уровень</h3>
+    <div>
+      <label for="">Уровень</label>
+      <input type="number" v-model.number="lvl" name="" value="" @click="calc">
+    </div>
+    <div>
+      <label for="">Сила</label>
+      <input type="number" v-model.number="power" name="" value="" @click="calc">
+    </div>
+    <div>
+      <label for="">Рассход маны</label>
+      <input type="number" v-model.number="cost" name="" value="" @click="calc">
+    </div>
+    <div>
+      <label for="">Откат</label>
+      <input type="number" v-model.number="cooldown" name="" value="" @click="calc">
+    </div>
+    <h3>Максимальный уровень</h3>
+    <div>
+      <label for="">Уровень</label>
+      <input type="number" v-model.number="lvlMax" name="" value="" @click="calc">
+    </div>
+    <div>
+      <label for="">Сила</label>
+      <input type="number" v-model.number="powerMax" name="" value="" @click="calc">
+    </div>
+    <div>
+      <label for="">Рассход маны</label>
+      <input type="number" v-model.number="costMax" name="" value="" @click="calc">
+    </div>
+    <div>
+      <label for="">Откат</label>
+      <input type="number" v-model.number="cooldownMax" name="" value="" @click="calc">
+    </div>
+
+    <h3>{{ result }}</h3>
+
+
+
+    <button type="button" name="button" @click="calc">Рассчитать</button>
+  </div>
+
+  <script src="calculator.js"></script>
+</body>
+
+</html>
