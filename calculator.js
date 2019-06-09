@@ -9,12 +9,20 @@ var app = new Vue({
     costMax: 4,
     cooldown: 8,
     cooldownMax: 3,
-    result: ''
+    result: ""
   },
   methods: {
     calc: function() {
-      console.log('calc')
-      this.result = "lvl def: " + (this.lvlMax - this.lvl) + " power: " + this.powerMax / this.power + ". cost: " + this.costMax / this.cost + ". cooldown: " + this.cooldownMax / this.cooldown
+      console.log("calc");
+      this.result =
+        "lvl def: " +
+        (this.lvlMax - this.lvl) +
+        " power: " +
+        this.powerMax / this.power +
+        ". cost: " +
+        this.costMax / this.cost +
+        ". cooldown: " +
+        this.cooldownMax / this.cooldown;
     }
   }
-})
+});

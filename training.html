@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Play</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Play</title>
+    <!-- development version, includes helpful console warnings -->
+    <script src="vue.js"></script>
+  </head>
 
-  <!-- development version, includes helpful console warnings -->
-  <script src="vue.js"></script>
-</head>
+  <body>
+    <div id="app">
+      <table border width="100%" cellspacing="20px" cellpadding="15px">
+        <tr>
+          <td width="30%">
+            <!-- <button :click="changeTarget(heroes[0])">Поменять ком</button> -->
+            <hero-card
+              :hero="heroes[0]"
+              :target="heroes[1]"
+              get-target="getTarget"
+            ></hero-card>
+          </td>
 
-<body>
-  <div id="app">
-    <table border width="100%" cellspacing="20px" cellpadding="15px">
-      <tr>
-        <td width="30%">
-          <!-- <button :click="changeTarget(heroes[0])">Поменять ком</button> -->
-          <hero-card :hero="heroes[0]" :target="heroes[1]" get-target="getTarget"></hero-card>
-        </td>
+          <td width="40%" align="center">
+            <buttle-info :logs="logs" :step="step"></buttle-info>
+          </td>
 
-        <td width="40%" align="center">
-          <buttle-info :logs="logs" :step="step"></buttle-info>
-        </td>
+          <td width="30%">
+            <hero-card
+              :hero="heroes[1]"
+              :target="heroes[0]"
+              :get-target="getTarget"
+            ></hero-card>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-        <td width="30%">
-          <hero-card :hero="heroes[1]" :target="heroes[0]" :get-target="getTarget"></hero-card>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <script src="skills.js"></script>
-  <script src="components.js"></script>
-  <script src="App.js"></script>
-</body>
-
+    <script src="skills.js"></script>
+    <script src="components.js"></script>
+    <script src="App.js"></script>
+  </body>
 </html>

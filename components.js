@@ -1,6 +1,6 @@
 Vue.component("hero-card", {
-    props: ["hero", "target", "getTarget"],
-    template: `
+  props: ["hero", "target", "getTarget"],
+  template: `
   <div>
     <hero-target :hero="target"></hero-target>
     <hero-info :hero="hero"></hero-info>
@@ -9,8 +9,8 @@ Vue.component("hero-card", {
 });
 
 Vue.component("hero-info", {
-    props: ["hero"],
-    template: `
+  props: ["hero"],
+  template: `
         <div>
           <p>Имя: {{ hero.name }}</p>  
           <p>Здоровье: {{ hero.hp }}</p>  
@@ -20,18 +20,18 @@ Vue.component("hero-info", {
 });
 
 Vue.component("hero-skill", {
-    props: ["skill", "source", "target"],
-    template: `<button @click='skill.use(source, target)' :title="skill.description + '. Откат: ' + skill.step">{{ skill.name }} {{skill.power}} </button>`
+  props: ["skill", "source", "target"],
+  template: `<button @click='skill.use(source, target)' :title="skill.description + '. Откат: ' + skill.step">{{ skill.name }} {{skill.power}} </button>`
 });
 
 Vue.component("hero-target", {
-    props: ["hero"],
-    template: `<div>Цель: {{ hero.name }}</div>`
-})
+  props: ["hero"],
+  template: `<div>Цель: {{ hero.name }}</div>`
+});
 
 Vue.component("buttle-info", {
-    props: ["logs", "step"],
-    template: `
+  props: ["logs", "step"],
+  template: `
   <div>
     <p>Ход: {{ step }}</p>
     <div style="max-height: 150px; overflow: auto;">
@@ -41,6 +41,6 @@ Vue.component("buttle-info", {
 });
 
 Vue.component("buttle-log", {
-    props: ["log"],
-    template: `<p>{{ log }}</p>`
+  props: ["log"],
+  template: `<p>{{ log }}</p>`
 });
